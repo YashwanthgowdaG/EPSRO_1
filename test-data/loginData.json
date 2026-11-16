@@ -1,0 +1,20 @@
+[
+  {
+    "testName": "Valid Login",
+    "username": "${ERP_USERNAME}",
+    "password": "${ERP_PASSWORD}",
+    "expectedResult": "success"
+  },
+  {
+    "testName": "Invalid Password",
+    "username": "${ERP_USERNAME}",
+    "password": "wrong-password",
+    "expectedResult": "failure"
+  },
+  {
+    "testName": "Empty Password",
+    "username": "${ERP_USERNAME}",
+    "password": "",
+    "expectedResult": "failure"
+  }
+]
