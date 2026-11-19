@@ -1,15 +1,16 @@
 import { Page, Locator } from '@playwright/test';
-import { BasePage } from './BasePage';
+import { takeScreenshot } from '../utils/ScreenshotUtil';
 
-export class LoginPage extends BasePage {
-
+export class LoginPage  {
+     
+    readonly page: Page;
     readonly username: Locator;
     readonly password: Locator;
     readonly loginButton: Locator;
 
     constructor(page: Page) {
 
-        super(page);
+        this.page = page;
 
         this.username = page.locator(
             'input[name="data:loginId"]'
@@ -25,15 +26,17 @@ export class LoginPage extends BasePage {
     }
 
     async openLoginPage() {
-        await this.navigateTo('./');//./ resolves relative to your configured ERP base URL, keeping the /ERP/ path.
+        await this.page.goto('./');//./ resolves relative to your configured ERP base URL, keeping the /ERP/ path.
     }
 
     async login(username: string, password: string) {
 
-        await this.enterText(this.username, username);
+        await this.username.fill( username);
 
-        await this.enterText(this.password, password);
+        await this.password.fill( password);
 
-        await this.clickElement(this.loginButton);
+        await this.loginButton.click();
+        await takeScreenshot(this.page, 'Valid_Login');
+        
     }
 }

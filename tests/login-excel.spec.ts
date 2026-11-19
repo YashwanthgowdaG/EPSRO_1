@@ -7,7 +7,7 @@ const excelData = readExcel(
     'LoginData'
 );
 
-for (const data of excelData) {
+for (const data of excelData) {  
 
     const testData = {
         testName: String(data.testName ?? ''),

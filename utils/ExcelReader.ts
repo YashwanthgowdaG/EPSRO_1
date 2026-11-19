@@ -1,10 +1,7 @@
 
 import * as XLSX from 'xlsx';
 
-export function readExcel(
-    filePath: string,
-    sheetName: string
-): Record<string, unknown>[] {
+export function readExcel(filePath: string,sheetName: string): Record<string, unknown>[] {
 
     const workbook = XLSX.readFile(filePath);
 
